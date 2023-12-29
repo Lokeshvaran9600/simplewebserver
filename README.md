@@ -1,5 +1,5 @@
 # EX01 Developing a Simple Webserver
-## Date:
+## Date:28.12.2023
 
 ## AIM:
 To develop a simple webserver to serve html pages.
@@ -23,6 +23,7 @@ Testing the webserver.
 ## PROGRAM:
 
 ```
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 content = """
 <html>
@@ -54,6 +55,27 @@ content = """
 <th>4</th>
 <th>SAP</th>
 <th>6.4 billon</yh>
+</tr>
+<tr>
+<th>5</th>
+<th>symentec</th>
+<th>5.6 billion</th>
+</boby>
+</html>
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',8000)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
+
+
 ```
 
 ## OUTPUT:
